@@ -152,10 +152,42 @@ exports.findOne = async (req, res) => {
     }
 };
 
-// try {
+// Delete a Tutorial with the specified id in the request
+exports.delete = async (req, res) => {
+    try {
+        const id = req.params.id;
 
-// } catch (err) {
-//     res.status(500).send({
-//         message: err.message || 'Some error occurred while creating the Tutorial.',
-//     });
-// }
+        // get project data from id
+        const data = await Project.destroy({ where: { id } });
+
+        // Response data
+        if (data === 1) {
+            return res.send(true);
+        }
+        return res.send(false);
+    } catch (err) {
+        res.status(500).send({
+            message: err.message || 'Some error occurred while creating the Tutorial.',
+        });
+    }
+
+    // Tutorial.destroy({
+    //     where: { id: id },
+    // })
+    //     .then(num => {
+    //         if (num == 1) {
+    //             res.send({
+    //                 message: 'Tutorial was deleted successfully!',
+    //             });
+    //         } else {
+    //             res.send({
+    //                 message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`,
+    //             });
+    //         }
+    //     })
+    //     .catch(err => {
+    //         res.status(500).send({
+    //             message: 'Could not delete Tutorial with id=' + id,
+    //         });
+    //     });
+};

@@ -42,7 +42,6 @@ app.get('/', (req, res) => {
     res.json({ message: 'Welcome to project excersice application.' });
 });
 
-// require('./app/routes/turorial.routes')(app);
 require('./app/routes/project.routes')(app);
 
 // set port, listen for requests

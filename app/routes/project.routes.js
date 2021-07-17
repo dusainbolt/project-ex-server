@@ -29,5 +29,8 @@ module.exports = app => {
     // Retrieve all Tutorials
     router.get('/', projects.findAll);
 
+    // Delete a Tutorial with id
+    router.delete('/:id', projects.delete);
+
     app.use('/api/projects', router);
 };
